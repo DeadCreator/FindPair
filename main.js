@@ -10,12 +10,15 @@ const checkMatched = () => {
     }
 }
 async function lol() {
-    this.classList.add('active')
-    const activeCards = document.querySelectorAll('.active')
+    let activeCards = document.querySelectorAll('.active')
+    if (activeCards.length < 2) {
+        this.classList.add('active')
+        activeCards = document.querySelectorAll('.active')
 
-    await delay(500)
-
+        await delay(500)
+    }
     if (activeCards.length === 2) {
+
         if (activeCards[0].classList[1] === activeCards[1].classList[1]) {
             console.log("Great!")
             activeCards[0].classList.add('matched')
