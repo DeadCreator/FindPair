@@ -1,28 +1,54 @@
-body, html {
-    margin: 0;
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
+button, h3 {
+    font-family: "Pixelify Sans", sans-serif;
 }
 
-main, header {
+body, html {
+    margin: 0;
+}
+
+main, header, footer, .menu {
     display: flex;
-    justify-content: center;
 }
 
 header, footer {
-    height: 12vh;
-    width: 100%;
+    height: calc((100vh - 178vw) / 2);
+    padding: 2vw;
     background-color: lightgreen;
-    margin-bottom: 5vw;
 }
+
 
 main {
     background-color: lightgoldenrodyellow;
-    aspect-ratio: 9 / 14;
+    position: relative;
+    height: 170vw;
 }
 
-footer {
-    margin-top: 5vw;
-    margin-bottom: 5vw;
+
+.menu {
+    position: absolute;
+    flex-direction: column;
+    background-color: lightseagreen;
+    align-items: center;
+    width: 90vw;
+    padding: 5vw;
+    height: calc(100% - 10vw);
+    z-index: 2;
+    gap: 4vw;
+}
+
+.menu * {
+    width: 90%;
+    font-size: 7vw;
+    padding: 2.5vw;
+}
+
+.menu h3 {
+    text-align: center;
+    margin-top: 25vw;
+    font-size: 10vw;
+    color: white;
 }
 
 .field {

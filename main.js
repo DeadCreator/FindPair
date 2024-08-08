@@ -1,6 +1,5 @@
 const x = 4
 const y = 6
-
 const delay = ms => new Promise(res => setTimeout(res, ms))
 
 const checkMatched = () => {
@@ -82,4 +81,11 @@ const makeField = (x, y) => {
 }
 
 window.onload = () => {makeField(x, y)}
+
+
+
+//How to add difficulty to the game:
+// 1) Add timer (for example, 1 minute)
+// 2) Set a restricted amount of touches (more than minimal, but restricted)
+// 3) Different amount of cards
 
