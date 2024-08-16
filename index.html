@@ -4,30 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="media/favicon.ico">
     <title>Find The Pair</title>
 </head>
 <body>
     <header>
-        <button>Pause/Play</button>
-        <button>Sound Off</button>
+        <button id="header-pause-btn" hidden="true"></button>
+        <button id="header-sound-btn"></button>
+        <h3 id="timer">--:--</h3>
     </header>
     <main>
-        <section class="main menu">
-
+        <section class="main menu" id="main-menu">
+            <div class="main-submenu" style="display: flex">
+                <button id="level-select">Select level</button>
+            </div>
+            <div class="level-selection">
+                <button class="level-btn 1">1</button>
+                <button class="level-btn 2">2</button>
+                <button class="level-btn 3">3</button>
+                <button class="level-btn 4">4</button>
+                <button class="level-btn 5">5</button>
+                <button id="back-to-main-submenu">Back to main</button>
+            </div>
+            <div class="start-game">
+                <button id="start-game-btn">Start Game</button>
+                <button id="back-to-level-selection">Back</button>
+            </div>
         </section>
-        <section class="pause menu">
+        <section class="pause menu" id="pause-menu">
             <h3>Paused</h3>
-            <button>Resume</button>
+            <button id="menu-pause-btn">Resume</button>
+            <button id="restart-game-btn">Restart</button>
             <button>Settings</button>
-            <button>Back to main menu</button>
+            <button id="back-to-main-submenu-paused">Back to main menu</button>
         </section>
         <section class="field">
         </section>
-        <audio src="media/ost/test.mp3"></audio>
+        <audio id="audio" src="media/ost/night-in-kyoto.mp3"></audio>
     </main>
     <footer>
 
     </footer>
     <script src="main.js"></script>
+    <script src="buttons.js"></script>
 </body>
 </html>
