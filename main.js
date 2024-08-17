@@ -80,7 +80,6 @@ const makeField = (x, y) => {
                 }
             }
 
-            front.innerHTML = `${num}`
             front.style.backgroundImage = `url("${imgUrl + num}.png")`
 
             card.classList.add(`pair-${num}`)
