@@ -28,13 +28,13 @@ const levels = {
         name: "Level 3",
         x: 4,
         y: 5,
-        time: 45
+        time: 60
     },
     "4": {
         name: "Level 4",
         x: 4,
         y: 6,
-        time: 60
+        time: 90
     },
     "5": {
         name: "Level 5",
