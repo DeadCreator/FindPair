@@ -2,14 +2,30 @@ const mainMenu = document.getElementById('main-menu');
 const pauseMenu = document.getElementById('pause-menu')
 const pauseButtons = [document.getElementById('header-pause-btn'), document.getElementById('menu-pause-btn')]
 
+const field = document.querySelector('.field')
+
 const soundBtn = document.getElementById('header-sound-btn')
 const audio = document.getElementById('audio')
+const menuClick = new Audio("media/sounds/menu-click.wav")
+const soundOff = new Audio("media/sounds/sound-off.wav")
+const soundStart = new Audio("media/sounds/start-game.wav")
+const soundPause = new Audio("media/sounds/pause-game.wav")
+let levelOstSrc = ""
 
-const musicNames = [
+const musicMenu = [
     "night-in-kyoto.mp3",
     "lazy-love-kem.mp3",
     "lateflights-pryces.mp3"
 ]
+
+const musicLevels = [
+    "vibin.mp3",
+    "storm-clouds.mp3",
+    "double-rainbow.mp3",
+    "when-i-was-a-boy.mp3",
+    "where-are-we.mp3",
+]
+
 
 const levels = {
     "1": {
@@ -58,9 +74,9 @@ const restartGameBtn = document.getElementById('restart-game-btn')
 const backToMainPaused = document.getElementById('back-to-main-submenu-paused')
 
 const musicShuffle = (curr) => {
-    let next = musicNames[Math.floor(Math.random() * musicNames.length)]
+    let next = musicMenu[Math.floor(Math.random() * musicMenu.length)]
     while (next === curr) {
-        next = musicNames[Math.floor(Math.random() * musicNames.length)]
+        next = musicMenu[Math.floor(Math.random() * musicMenu.length)]
     }
     audio.src = `media/ost/${next}`
 }
@@ -68,15 +84,19 @@ const musicShuffle = (curr) => {
 pauseButtons.forEach(btn => {
    btn.addEventListener('click', () => {
         pauseMenu.children[0].innerText = "Paused"
-       pauseButtons[1].hidden = false
+        pauseButtons[1].hidden = false
+       const soundCheck = soundBtn.classList[0]
+       soundCheck ? audio.play() : audio.pause()
         const result = pauseMenu.classList.toggle('show');
         if (result) {
             pauseButtons[0].style.backgroundImage = 'url("media/buttons/Play Button.svg")'
             stopTimer()
+            audio.pause()
         } else {
             pauseButtons[0].style.backgroundImage = 'url("media/buttons/Pause Button-2.svg")'
             startTimer()
         }
+        soundPause.play()
    })
 })
 
@@ -89,16 +109,19 @@ soundBtn.addEventListener('click', () => {
     else {
         soundBtn.style.backgroundImage = 'url("media/buttons/Sound On Button.svg")'
         audio.pause()
+        soundOff.play()
     }
 })
 
 levelSelBtn.addEventListener('click', () => {
     levelSelection.style.display = 'flex'
     mainSubmenu.style.display = 'none'
+    menuClick.play()
 })
 
 backToMainSubmenuBtn.addEventListener('click', () => {
     levelSelection.style.display = 'none'
+    menuClick.play()
     setGame()
 })
 
@@ -107,17 +130,23 @@ levelBtns.forEach(btn => {
         currLevel = levels[parseInt(btn.classList[1])]
         x = currLevel.x
         y = currLevel.y
+        levelOstSrc = `media/ost/${musicLevels[parseInt(btn.classList[1]) - 1]}`
         time = currLevel.time
         makeField(x, y)
         displayTimer(timeSpent, time)
         startGameMenu.style.display = 'flex'
         levelSelection.style.display = 'none'
+        field.classList.add('scale-field')
+        menuClick.play()
     })
 })
 
 backToLevelSelectionBtn.addEventListener('click', () => {
     levelSelection.style.display = 'flex'
     startGameMenu.style.display = 'none'
+    field.classList.remove('scale-field')
+    timerHUD.innerHTML = '--:--'
+    menuClick.play()
 })
 
 const setGame = () => {
@@ -140,10 +169,14 @@ const setGame = () => {
 const startGame = () => {
     timeSpent = 0
     pauseButtons[0].hidden = false
-    makeField(x, y)
-    startTimer()
     mainMenu.classList.remove('show')
     pauseMenu.classList.remove('show')
+    pauseButtons[0].style.backgroundImage = 'url("media/buttons/Pause Button-2.svg")'
+    makeField(x, y)
+    startTimer()
+    soundStart.play()
+    audio.src = levelOstSrc
+    audio.play()
 }
 
 startGameBtn.addEventListener('click', startGame)
@@ -151,6 +184,11 @@ restartGameBtn.addEventListener('click', startGame)
 
 backToMainPaused.addEventListener('click', () => {
     setGame()
+    field.classList.remove('scale-field')
+    menuClick.play()
+    musicShuffle(0)
+    const soundCheck = soundBtn.classList[0]
+    soundCheck ? audio.play() : audio.pause()
 })
 
 

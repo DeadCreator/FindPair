@@ -1,7 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
-
+@font-face {
+    font-family: "Monocraft";
+    src: url("media/fonts/Monocraft/Monocraft.otf") format("opentype");
+}
+@font-face {
+    font-family: "Home Video";
+    src:
+        url("media/fonts/HomeVideo/HomeVideo-Regular.otf") format("opentype");
+        url("media/fonts/HomeVideo/HomeVideo-Bold.otf") format("opentype");
+}
+@font-face {
+    font-family: "Better VCR";
+    src: url("media/fonts/Better VCR/Better VCR 6.1.ttf") format("truetype");
+}
 button, h3 {
-    font-family: "Pixelify Sans", sans-serif;
+    font-family: "Monocraft", sans-serif;
 }
 
 body, html {
@@ -31,7 +44,7 @@ header {
 
 header h3 {
     color: white;
-    font-size: 9vw;
+    font-size: 8vw;
     margin: 0 0 0 auto
 }
 
@@ -45,7 +58,7 @@ header button {
     border: none;
     padding: 0;
     position: relative;
-    height: 13vw;
+    height: 15vw;
     aspect-ratio: 1;
     border-radius: 50%;
 }
@@ -84,13 +97,16 @@ header button {
 }
 
 .menu button {
-    background: url("media/buttons/ButtonDefault.svg") center/contain no-repeat;
-    border: none;
+    background: #A11FB6;
+    border: solid 5px #820996;
+    box-sizing: border-box;
+    border-radius: 10px;
     color: #E397EF;
+    margin: 1vw 0;
 }
 
 .menu button:hover, .menu button:focus, .menu button:active {
-    background: url("media/buttons/ButtonActive.svg") center/contain no-repeat;
+    background: #E397EF;
     color: white;
 }
 
@@ -101,22 +117,25 @@ header button {
 
 .menu * {
     width: 90%;
-    font-size: 7vw;
+    font-size: 6.4vw;
     padding: 2.5vw;
 }
 
 .level-selection * {
     text-align: left;
-    padding-left: 20%;
+}
+
+.level-selection *:last-child {
+    text-align: center;
 }
 
 .menu h3 {
     text-align: center;
     margin-top: 40vw;
-    font-size: 10vw;
+    font-size: 12vw;
     color: white;
-    font-weight: bold;
-    -webkit-text-stroke: 2px mediumpurple;
+    -webkit-text-stroke: 1px mediumpurple;
+    font-family: "Better VCR", sans-serif;
 }
 
 .field {
@@ -131,6 +150,13 @@ header button {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    transform: scale(0.1%);
+    transition: all 0.3s;
+}
+
+.scale-field {
+    transform: scale(1);
+    transition: all 0.3s;
 }
 
 .card {
@@ -146,7 +172,7 @@ header button {
 
 .card div {
     position: absolute;
-    background: coral url("media/cards/CardBackAlpha-2.svg") center/cover no-repeat;
+    background: #530293 url("media/cards/CardBackAlpha-2.svg") center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -161,10 +187,7 @@ header button {
 }
 
 .card div:last-child {
-    background: url("media/bg/pxArt.png") center/cover no-repeat;
     transform: rotateY(180deg);
-    font-family: "Droid Sans Mono", sans-serif;
-    font-size: 10vw;
 }
 
 .active, .matched {

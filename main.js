@@ -49,7 +49,6 @@ async function lol() {
     }
 }
 const makeField = (x, y) => {
-    const field = document.querySelector('.field')
     const imgUrl = "media/cards/card-"
     while (field.hasChildNodes()) {
         field.removeChild(field.firstChild)
