@@ -79,7 +79,7 @@ const makeField = (x, y) => {
                 }
             }
 
-            front.style.backgroundImage = `url("${imgUrl + num}.png")`
+            front.style.backgroundImage = `url("${imgUrl + num}.webp")`
 
             card.classList.add(`pair-${num}`)
             card.addEventListener("click", lol)

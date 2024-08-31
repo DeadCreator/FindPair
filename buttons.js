@@ -56,7 +56,7 @@ const levels = {
         name: "Level 5",
         x: 5,
         y: 8,
-        time: 120
+        time: 150
     }
 }
 

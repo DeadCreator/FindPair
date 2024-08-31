@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 @font-face {
     font-family: "Monocraft";
     src: url("media/fonts/Monocraft/Monocraft.otf") format("opentype");
@@ -15,6 +14,10 @@
 }
 button, h3 {
     font-family: "Monocraft", sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 body, html {
@@ -22,9 +25,10 @@ body, html {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background: url("media/bg/bg2.jpg") no-repeat -50px;
+    background: url("media/bg/bg2.webp") no-repeat -50px;
     background-size: cover;
     overflow: hidden;
+    /*touch-action: manipulation;*/
 }
 
 main, header, footer, .menu {
